@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white m-0 p-0 overflow-hidden;
+    /* Touch manipulation to prevent double tap zoom */
+    touch-action: manipulation;
+  }
+
+  /* Custom scrollbar: 2px width, #444 track, #FFF thumb */
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #444444;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #FFFFFF;
+  }
+
+  * {
+    /* ZERO box-shadows, ZERO gradients, ZERO border radius globally where possible unless specifically applied */
+    box-shadow: none !important;
+    border-radius: 0px !important;
+  }
+}

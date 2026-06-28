@@ -1,0 +1,22 @@
+<<<<<<< SEARCH
+    socketRef.current.on('message_status', (payload: { chatId: string, messageId: string, status: 'sent' | 'delivered' | 'read' }) => {
+        const localChatId = payload.chatId.split('_').find(p => p !== user.phone) || payload.chatId;
+        updateMessageStatus(localChatId, payload.messageId, payload.status);
+    });
+
+    return () => {
+=======
+    socketRef.current.on('message_status', (payload: { chatId: string, messageId: string, status: 'sent' | 'delivered' | 'read' }) => {
+        const localChatId = payload.chatId.split('_').find(p => p !== user.phone) || payload.chatId;
+        updateMessageStatus(localChatId, payload.messageId, payload.status);
+    });
+
+    socketRef.current.on('typing', (payload: { from: string }) => {
+      // We can emit a custom event on the window or use a specific state in zustand.
+      // But actually, it's easier to handle this inside the hook and expose a callback or state.
+      const event = new CustomEvent('socket_typing', { detail: { from: payload.from } });
+      window.dispatchEvent(event);
+    });
+
+    return () => {
+>>>>>>> REPLACE
